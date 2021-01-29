@@ -1,0 +1,36 @@
+/* ---------------------------------------- */
+
+/* ==          BODY            */
+
+/*---------------------------------------- */
+body{
+    margin:0;
+    padding:0;
+    font-family: $montserrat;
+    display: flex;
+    background-color: $color-dune;
+    justify-content: space-between;
+    color:$color-white;
+    @include desktop-only{
+        &::after, &::before{
+            content: "";
+            width: 10vw;
+            background-color: $color-white;
+        }
+    }
+    @include  end-mobile-only{ 
+        flex-direction: column;
+        margin:0px 20px;
+    }
+    @include  mobile-mobile{ 
+        // margin:0px;
+        font-size: 12px;
+        margin: 0px;
+    }
+    & a{
+        text-decoration: none;
+        font-family: $montserrat;
+        font-size: 1rem;
+        color: inherit;
+    }
+}

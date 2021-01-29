@@ -1,0 +1,305 @@
+
+/* ---------------------------------------- */
+
+/* ==          VARIABLES              */
+
+/*---------------------------------------- */
+$thedirection:to;
+$totop:top;
+$tobottom:bottom;
+$toright:right;
+$toleft:left;
+$toright: right;
+
+
+/* ---------------------------------------- */
+
+/* ==          MIXIN              */
+
+/*---------------------------------------- */
+@mixin linearGradient($direction, $coloranddirectionone,$coloranddirectiontwo) {
+    background-image: -webkit-gradient(linear, left top, left bottom, from($direction), color-stop($coloranddirectionone),to($coloranddirectiontwo));
+    background-image: linear-gradient($direction, $coloranddirectionone,$coloranddirectiontwo);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+@mixin bordertoprightradius($number) { //USE
+    border-top-right-radius: $number;
+}
+@mixin bordertopleftradius($number) { //USE
+    border-top-left-radius: $number;
+}
+@mixin borderbottomleftradius($number) { //USE
+    border-bottom-left-radius: $number;
+}
+@mixin tauxdescompetencesutilises() { //USE
+    @each $content, $value in $tauxdemaitrise {
+        & .notation{
+            display: flex;
+            justify-content: center;
+            margin-top:-10px;
+            margin-bottom:10px;
+            &.#{map-get($value, nom)}{
+                @for $i from 1 through 5 {
+                    & li:nth-child(#{$i}) {
+                        display:inline-block;
+                        width:5px;
+                        height:5px;
+                        @include borderradius(50%);
+                        margin-left:5px;
+                        border:solid $color-scampi 1px;
+                        @if ($i <= map-get($value, taux)) {
+                            background-color: $color-scampi;
+                        }
+                    }
+                }
+            }
+        }  
+    }
+}
+@mixin transformrotate($value) { //USE
+    -webkit-transform: rotate($value);
+        -moz-transform: rotate($value);
+        -ms-transform: rotate($value);
+        -o-transform: rotate($value);
+}
+@mixin transformscale($value) {//USE
+    transform: scaleY($value);
+    -webkit-transform: scaleY($value);
+    -moz-transform: scaleY($value);
+    -ms-transform: scaleY($value);
+    -o-transform: scaleY($value);
+}
+@mixin borderbottomrightradius($number) { //USE
+    border-bottom-right-radius: $number;
+}
+@mixin titlemenuh2($text) {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10vh;
+    font-family: $text;
+}
+@mixin sectionmenu($color) {
+    padding: 4vw 8vw 4vw 8vw;
+    background-color: $color;
+    width:44vw;
+    margin-left: 17vw;
+    margin-bottom: 20vh;
+}
+@mixin serviceh3($family) {
+    font-family: $family;
+    padding-bottom: 5px;
+    margin-bottom: -10px;
+    display: flex;
+    justify-content: space-between;
+}
+@mixin souligneimg($trait) { //USE
+    background: url($trait);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    overflow: none;
+}
+@mixin profil_image($image) {
+    background: url($image);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    overflow: none;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+}
+@mixin borderradius($radius) { //USE
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+}
+@mixin selectnew {
+    & img{
+        height: 10px;
+        &#fleche_haut{
+            display: none;
+        }
+    }
+    & .options{
+            display: none;
+            flex-direction: column;
+            border: none;
+            padding: 0px;
+            font-size: 12px;
+            margin-top: 10px;
+            position: absolute;
+            background-color: white;
+            & li{
+                padding: 0px;
+                padding: 10px 10px;
+                text-align: center;
+                border: solid black 1px;  
+                color: #b7b7b7;
+                &:hover{
+                    background-color: #ececec;
+                    color: black;
+                }
+            }
+            
+    }
+}
+@mixin plat($family) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-family: $family;
+}
+@mixin button {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border: solid 5px #fdb93e;
+    background-color: #fea500;
+    &:hover{
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
+@mixin borderhover($color) {
+    border-top: solid $color 3px;
+}
+/* ---------------------------------------- */
+
+/* ==          PLACEHOLDER              */
+
+/*---------------------------------------- */
+%typograhy{
+    background-color: $color-Grayish-turquoise;
+    color: $color-vividyellow;
+    padding:20px 18px 20px 10px;
+    font-family: "police_specifique_ohmyfood";
+}
+
+%souligne{    
+    content: "";
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1000ms ease-in-out;
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    -webkit-transition: transform 1000ms ease-in-out;
+    -moz-transition: transform 1000ms ease-in-out;
+    -ms-transition: transform 1000ms ease-in-out;
+    -o-transition: transform 1000ms ease-in-out;
+}
+%hoversouligne{
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+}
+/* ---------------------------------------- */
+
+/* ==          MAP              */
+
+/*---------------------------------------- */
+$tauxdemaitrise: (
+    GrandMaster: (
+        nom:"fivestars",
+        taux: 5,
+    ),
+    Master: (
+        nom:"fourstars",
+        taux: 4,
+    ),
+    Expert: (
+        nom:"threestars",
+        taux: 3,
+    ),
+    Graduate: (
+        nom:"twostars",
+        taux: 2,
+    ),
+    Novice: (
+        nom:"astar",
+        taux: 1,
+    )
+);
+$breakpoints: (
+    desktop: '1025px',
+    tablet: '1024px',
+    start-tablet: '771px',
+    tablet-semi: '750px',
+    mobile:  '428px',
+    end-mobile:  '770px',
+    semi-mobile:  '600px',
+    mobile-mobile:  '500px',
+    final-mobile:  '400px',
+);
+/* ---------------------------------------- */
+
+/* ==          MIXIN              */
+
+/*---------------------------------------- */
+@mixin desktop-only {
+    @media screen and (min-width: map-get($breakpoints, desktop)){
+        @content;
+    }
+}
+@mixin tablet-only {
+    @media screen and (max-width: map-get($breakpoints, tablet)){
+        @content;
+    }
+}
+@mixin begin-tablet {
+    @media screen and (min-width: map-get($breakpoints, start-tablet)){
+        @content;
+    }
+}
+@mixin begin-mobile {
+    @media screen and (max-width: map-get($breakpoints, start-tablet)){
+        @content;
+    }
+}
+@mixin tablet-semi-only {
+    @media screen and (max-width: map-get($breakpoints, tablet-semi)){
+        @content;
+    }
+}
+@mixin end-mobile-only {
+    @media screen and (max-width: map-get($breakpoints, end-mobile)){
+        @content;
+    }
+}
+@mixin semi-mobile-only {
+    @media screen and (max-width: map-get($breakpoints, semi-mobile)){
+        @content;
+    }
+}
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)){
+        @content;
+    }
+}
+@mixin mobile-mobile {
+    @media screen and (max-width: map-get($breakpoints, mobile-mobile)){
+        @content;
+    }
+}
+@mixin final-only {
+    @media screen and (max-width: map-get($breakpoints, final-mobile)){
+        @content;
+    }
+}
